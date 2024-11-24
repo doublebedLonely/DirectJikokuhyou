@@ -36,4 +36,52 @@ class BitmapGenerator(private val context: Context) {
 
         return bitmap
     }
+
+    fun generateStationSymbol(
+        text: String,
+        circleColor: Int,
+        textColor: Int,
+        textSize: Float,
+        textHeight: Int // 文字のBitmap高さを基準に調整
+    ): Bitmap {
+        val paint = Paint().apply {
+            isAntiAlias = true
+            textAlign = Paint.Align.CENTER
+        }
+
+        // シンボルマークのサイズを文字高さの90%に調整
+        val diameter = (textHeight * 0.8).toInt()
+        val radius = diameter / 2
+
+        // Bitmapを生成
+        val bitmap = Bitmap.createBitmap(diameter, diameter, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+
+        // 背景の丸を描画
+        paint.color = circleColor
+        canvas.drawCircle(radius.toFloat(), radius.toFloat(), radius.toFloat(), paint)
+
+        // テキストを描画
+        paint.color = textColor
+        paint.textSize = textSize * 0.8f // テキストサイズも少し縮小
+        val lines = text.split("\n")
+
+        // テキストの総高さを計算
+        val lineHeight = paint.textSize
+        val totalTextHeight = lines.size * lineHeight + (lines.size - 1) * 4 // 行間を4ピクセル程度空ける
+
+        // テキストの基準点を計算
+        val centerY = radius.toFloat()
+        val startY = centerY - totalTextHeight / 2 + lineHeight / 2
+
+        // 各行を描画
+        for ((index, line) in lines.withIndex()) {
+            val y = startY + index * (lineHeight + 4) // 行間を加味
+            canvas.drawText(line, radius.toFloat(), y, paint)
+        }
+
+        return bitmap
+    }
+
+
 }

@@ -68,6 +68,19 @@ class WidgetProvider : AppWidgetProvider() {
             val totalWidth1 = bitmaps[0].first.width + bitmaps[0].second.width + bitmaps[0].third.width
             val totalWidth2 = bitmaps[1].first.width + bitmaps[1].second.width + bitmaps[1].third.width
 
+            val stationSymbolBitmap = bitmapGenerator.generateStationSymbol(
+                text = "OH\n01",
+                circleColor = Color.BLUE,
+                textColor = Color.WHITE,
+                textSize = 24f,
+                textHeight = bitmaps[0].first.height // 時刻Bitmapの高さを基準にする
+            )
+
+// シンボルマークをウィジェットに設定
+            views.setImageViewBitmap(R.id.widget_station_symbol, stationSymbolBitmap)
+            views.setImageViewBitmap(R.id.widget_station_symbol2, stationSymbolBitmap)
+
+
             // 幅の合計が`containerMaxWidth`を超える場合にリサイズ
             if (totalWidth1 > containerMaxWidth) {
                 val scaleFactor = containerMaxWidth.toFloat() / totalWidth1

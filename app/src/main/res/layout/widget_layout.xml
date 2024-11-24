@@ -36,6 +36,15 @@
             android:layout_gravity="start"
             android:contentDescription="" />
 
+        <ImageView
+            android:id="@+id/widget_station_symbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="" />
+
+
         <LinearLayout
             android:id="@+id/widget_image_shrink_container"
             android:layout_width="wrap_content"
@@ -76,6 +85,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
+            android:contentDescription="" />
+
+        <ImageView
+            android:id="@+id/widget_station_symbol2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginEnd="8dp"
             android:contentDescription="" />
 
         <ImageView
