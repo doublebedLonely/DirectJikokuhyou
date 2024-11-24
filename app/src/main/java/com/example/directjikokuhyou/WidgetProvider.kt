@@ -5,15 +5,13 @@ import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Typeface
+import android.graphics.Color
 import android.widget.RemoteViews
+import com.example.directjikokuhyou.utils.BitmapGenerator
 import com.example.directjikokuhyou.utils.loadTrainTimes
 import com.example.directjikokuhyou.utils.getNextTwoDirectTrains
 import com.example.directjikokuhyou.utils.getWidgetContainerMaxWidth
-import com.example.directjikokuhyou.utils.resizeBitmapWidth
+import com.example.directjikokuhyou.utils.BitmapUtils
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
@@ -24,6 +22,9 @@ class WidgetProvider : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
+
+        val bitmapGenerator = BitmapGenerator(context) // BitmapGeneratorを初期化
+
         // 複数のウィジェットがある場合に対応
         for (appWidgetId in appWidgetIds) {
             // ウィジェットレイアウトを取得
@@ -39,61 +40,54 @@ class WidgetProvider : AppWidgetProvider() {
             )
             views.setOnClickPendingIntent(R.id.widget_image_container, pendingIntent)
 
-            // 現在の時刻を取得
+            // 現在の時刻を取得し、widget_textに設定
             val currentTime: String = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"))
-            // 取得した現在時刻をwidget_textに設定
             views.setTextViewText(R.id.widget_text, "更新時刻: $currentTime")
 
             // `widget_image_container`の最大幅を取得
             val containerMaxWidth = getWidgetContainerMaxWidth(context, appWidgetManager, appWidgetId)
 
-
             val trainTimeList = loadTrainTimes(context)
             val trainTimePair = getNextTwoDirectTrains(trainTimeList)
 
             // Bitmapを作成
-            val bitmap = createBitmapWithCustomFont(
-                context,
-                trainTimePair.first?.time ?: "直通なし",
-                R.font.pixelfont, // フォントリソース
-                50f, // テキストサイズ
-                textColor = android.graphics.Color.WHITE
+            val bitmap = bitmapGenerator.generate(
+                text = trainTimePair.first?.time ?: "直通なし",
+                fontResId = R.font.pixelfont,
+                textSize = 50f,
+                textColor = Color.WHITE
             )
 
             // Bitmapを作成
             val bitmapExp = when (trainTimePair.first?.color){
-                "b" -> createBitmapWithCustomFont(
-                context,
-                "        ",
+                "b" -> bitmapGenerator.generate(
+                "  ",
                 R.font.pixelfont, // フォントリソース
                 50f, // テキストサイズ
-                android.graphics.Color.CYAN
+                Color.CYAN
                 )
 
-                "r" -> createBitmapWithCustomFont(
-                    context,
-                    "    急行",
+                "r" -> bitmapGenerator.generate(
+                    " 急行",
                     R.font.pixelfont, // フォントリソース
                     50f, // テキストサイズ
-                    android.graphics.Color.RED
+                    Color.RED
                 )
 
-                else -> createBitmapWithCustomFont(
-                    context,
-                    "        ",
+                else -> bitmapGenerator.generate(
+                    "",
                     R.font.pixelfont, // フォントリソース
                     50f, // テキストサイズ
-                    android.graphics.Color.RED
+                    Color.RED
                 )
                 }
 
             // Bitmapを作成
-            val bitmapDest = createBitmapWithCustomFont(
-                context,
+            val bitmapDest = bitmapGenerator.generate(
                 "新宿",
                 R.font.pixelfont, // フォントリソース
                 50f, // テキストサイズ
-                android.graphics.Color.CYAN
+                Color.parseColor("#FFA500") // 明るいオレンジ
             )
 
             // `widget_image`はそのまま設定
@@ -109,63 +103,20 @@ class WidgetProvider : AppWidgetProvider() {
                 val adjustedDestWidth = (bitmapDest.width * scaleFactor).toInt()
 
                 // 幅のみリサイズ（高さは固定）
-                val resizedBitmapExp = resizeBitmapWidth(bitmapExp, adjustedExpWidth)
-                val resizedBitmapDest = resizeBitmapWidth(bitmapDest, adjustedDestWidth)
-
-                println("Resized Exp Width: ${resizedBitmapExp.width}, Height: ${resizedBitmapExp.height}")
-                println("Resized Dest Width: ${resizedBitmapDest.width}, Height: ${resizedBitmapDest.height}")
+                val resizedBitmapExp = BitmapUtils.resizeWidth(bitmapExp, adjustedExpWidth)
+                val resizedBitmapDest = BitmapUtils.resizeWidth(bitmapDest, adjustedDestWidth)
 
                 // リサイズ後のBitmapを設定
                 views.setImageViewBitmap(R.id.widget_image_exp, resizedBitmapExp)
                 views.setImageViewBitmap(R.id.widget_image_dest, resizedBitmapDest)
-                println("resized")
             } else {
                 // 幅が問題なければそのまま設定
                 views.setImageViewBitmap(R.id.widget_image_exp, bitmapExp)
                 views.setImageViewBitmap(R.id.widget_image_dest, bitmapDest)
-                println("not resized")
             }
-
-            println("Bitmap Widths - widget_image: ${bitmap.width}, widget_image_exp: ${bitmapExp.width}, widget_image_dest: ${bitmapDest.width}")
-            println("Total Width: $totalWidth, Container Max Width: $containerMaxWidth")
-
 
             // ウィジェットを更新
             appWidgetManager.updateAppWidget(appWidgetId, views)
-            println("update widget")
         }
-    }
-
-    fun createBitmapWithCustomFont(
-        context: Context,
-        text: String,
-        fontResId: Int,
-        textSize: Float,
-        textColor: Int
-    ): Bitmap {
-        val paint = Paint().apply {
-            isAntiAlias = true
-            color = textColor
-            textAlign = Paint.Align.LEFT
-            this.textSize = textSize
-
-            // フォントを設定
-            typeface = Typeface.create(context.resources.getFont(fontResId), Typeface.NORMAL)
-        }
-
-        // テキストの幅と高さを計算
-        val textWidth = paint.measureText(text).toInt()
-        val textHeight = (paint.descent() - paint.ascent()).toInt()
-
-        // Bitmapを生成
-        val bitmap = Bitmap.createBitmap(textWidth, textHeight, Bitmap.Config.ARGB_8888)
-        val canvas = Canvas(bitmap)
-
-        // 背景を黒で塗りつぶす
-        canvas.drawColor(android.graphics.Color.parseColor("#101010"))
-        // カスタムフォント文字を描画
-        canvas.drawText(text, 0f, -paint.ascent(), paint)
-
-        return bitmap
     }
 }

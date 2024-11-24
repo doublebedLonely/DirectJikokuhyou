@@ -41,14 +41,3 @@ fun getWidgetContainerMaxWidth(
     val displayMetrics = context.resources.displayMetrics
     return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, containerWidthDp.toFloat(), displayMetrics).toInt()
 }
-
-fun resizeBitmapWidth(bitmap: Bitmap, newWidth: Int): Bitmap {
-    // 元の高さを取得
-    val originalHeight = bitmap.height
-
-    // デバッグ: 元のサイズ確認
-    println("Original Width: ${bitmap.width}, Height: $originalHeight, New Width: $newWidth")
-
-    // 幅を新しいサイズに設定し、高さはそのまま
-    return Bitmap.createScaledBitmap(bitmap, newWidth, originalHeight, true)
-}

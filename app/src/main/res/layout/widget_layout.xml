@@ -32,8 +32,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:scaleType="fitStart"
+            android:scaleType="fitXY"
+            android:layout_gravity="start"
             android:contentDescription="" />
+
+        <LinearLayout
+            android:id="@+id/widget_image_shrink_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="end">
 
         <ImageView
             android:id="@+id/widget_image_exp"
@@ -41,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:scaleType="fitXY"
-            android:contentDescription="" />
+            android:contentDescription=""/>
 
         <ImageView
             android:id="@+id/widget_image_dest"
@@ -49,7 +57,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:scaleType="fitXY"
-            android:contentDescription="" />
+            android:contentDescription=""/>
+
+        </LinearLayout>
     </LinearLayout>
 
     <TextView
