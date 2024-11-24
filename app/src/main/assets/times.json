@@ -1,0 +1,644 @@
+{
+  "times": [
+    {
+      "time": "04:55",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "05:17",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "05:37",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "05:49",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "05:59",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "06:01",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "06:11",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "06:20",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "06:27",
+      "color": "r",
+      "Direct": "n"
+    },
+    {
+      "time": "06:30",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "06:34",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "06:37",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "06:47",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "07:00",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "07:09",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "07:14",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "07:20",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "07:30",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "07:40",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "07:44",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "07:50",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "08:02",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "08:12",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "08:22",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "08:31",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "08:33",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "08:41",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "08:51",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "08:59",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "09:05",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "09:16",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "09:21",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "09:27",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "09:37",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "09:43",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "09:47",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "09:57",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "10:04",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "10:13",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "10:22",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "10:32",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "10:43",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "10:52",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "11:03",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "11:12",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "11:23",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "11:32",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "11:43",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "11:52",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "12:03",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "12:12",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "12:23",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "12:32",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "12:43",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "12:52",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "13:03",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "13:12",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "13:23",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "13:32",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "13:42",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "13:52",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "14:03",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "14:12",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "14:23",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "14:32",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "14:42",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "14:52",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "15:03",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "15:12",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "15:23",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "15:32",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "15:39",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "15:42",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "15:52",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "15:57",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "16:02",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "16:13",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "16:23",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "16:33",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "16:37",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "16:45",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "16:53",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "17:05",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "17:15",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "17:22",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "17:25",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "17:35",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "17:41",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "17:45",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "17:55",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "18:02",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "18:05",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "18:15",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "18:21",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "18:27",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "18:36",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "18:41",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "18:47",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "18:57",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "19:02",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "19:07",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "19:13",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "19:16",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "19:27",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "19:36",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "19:41",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "19:47",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "19:56",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "20:02",
+      "color": "r",
+      "Direct": "y"
+    },
+    {
+      "time": "20:07",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "20:16",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "20:27",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "20:36",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "20:47",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "20:57",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "21:07",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "21:15",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "21:28",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "21:37",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "21:47",
+      "color": "b",
+      "Direct": "y"
+    },
+    {
+      "time": "22:02",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "22:15",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "22:32",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "22:48",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "23:02",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "23:25",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "23:45",
+      "color": "b",
+      "Direct": "n"
+    },
+    {
+      "time": "00:07",
+      "color": "b",
+      "Direct": "n"
+    }
+  ]
+}

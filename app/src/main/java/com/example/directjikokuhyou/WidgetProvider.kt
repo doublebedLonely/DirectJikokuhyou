@@ -65,7 +65,7 @@ class WidgetProvider : AppWidgetProvider() {
     ): Bitmap {
         val paint = Paint().apply {
             isAntiAlias = true
-            color = android.graphics.Color.BLACK
+            color = android.graphics.Color.WHITE
             textAlign = Paint.Align.LEFT
             this.textSize = textSize
 
@@ -80,7 +80,12 @@ class WidgetProvider : AppWidgetProvider() {
         // Bitmapを生成
         val bitmap = Bitmap.createBitmap(textWidth, textHeight, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
+
+        // 背景を黒で塗りつぶす
+        canvas.drawColor(android.graphics.Color.BLACK)
+        // カスタムフォント文字を描画
         canvas.drawText(text, 0f, -paint.ascent(), paint)
+
         return bitmap
     }
 }
