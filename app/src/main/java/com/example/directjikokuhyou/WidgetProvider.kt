@@ -12,6 +12,8 @@ import android.graphics.Typeface
 import android.widget.RemoteViews
 import com.example.directjikokuhyou.utils.loadTrainTimes
 import com.example.directjikokuhyou.utils.getNextTwoDirectTrains
+import com.example.directjikokuhyou.utils.getWidgetContainerMaxWidth
+import com.example.directjikokuhyou.utils.resizeBitmapWidth
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
@@ -40,7 +42,11 @@ class WidgetProvider : AppWidgetProvider() {
             // 現在の時刻を取得
             val currentTime: String = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"))
             // 取得した現在時刻をwidget_textに設定
-            views.setTextViewText(R.id.widget_text, "Current Time: $currentTime")
+            views.setTextViewText(R.id.widget_text, "更新時刻: $currentTime")
+
+            // `widget_image_container`の最大幅を取得
+            val containerMaxWidth = getWidgetContainerMaxWidth(context, appWidgetManager, appWidgetId)
+
 
             val trainTimeList = loadTrainTimes(context)
             val trainTimePair = getNextTwoDirectTrains(trainTimeList)
@@ -90,10 +96,39 @@ class WidgetProvider : AppWidgetProvider() {
                 android.graphics.Color.CYAN
             )
 
-            // BitmapをImageViewに設定
+            // `widget_image`はそのまま設定
             views.setImageViewBitmap(R.id.widget_image, bitmap)
-            views.setImageViewBitmap(R.id.widget_image_exp, bitmapExp)
-            views.setImageViewBitmap(R.id.widget_image_dest, bitmapDest)
+
+            // 各Bitmapの幅を取得
+            val totalWidth = bitmap.width + bitmapExp.width + bitmapDest.width
+
+            // 幅の合計が`containerMaxWidth`を超える場合にリサイズ
+            if (totalWidth > containerMaxWidth) {
+                val scaleFactor = containerMaxWidth.toFloat() / totalWidth
+                val adjustedExpWidth = (bitmapExp.width * scaleFactor).toInt()
+                val adjustedDestWidth = (bitmapDest.width * scaleFactor).toInt()
+
+                // 幅のみリサイズ（高さは固定）
+                val resizedBitmapExp = resizeBitmapWidth(bitmapExp, adjustedExpWidth)
+                val resizedBitmapDest = resizeBitmapWidth(bitmapDest, adjustedDestWidth)
+
+                println("Resized Exp Width: ${resizedBitmapExp.width}, Height: ${resizedBitmapExp.height}")
+                println("Resized Dest Width: ${resizedBitmapDest.width}, Height: ${resizedBitmapDest.height}")
+
+                // リサイズ後のBitmapを設定
+                views.setImageViewBitmap(R.id.widget_image_exp, resizedBitmapExp)
+                views.setImageViewBitmap(R.id.widget_image_dest, resizedBitmapDest)
+                println("resized")
+            } else {
+                // 幅が問題なければそのまま設定
+                views.setImageViewBitmap(R.id.widget_image_exp, bitmapExp)
+                views.setImageViewBitmap(R.id.widget_image_dest, bitmapDest)
+                println("not resized")
+            }
+
+            println("Bitmap Widths - widget_image: ${bitmap.width}, widget_image_exp: ${bitmapExp.width}, widget_image_dest: ${bitmapDest.width}")
+            println("Total Width: $totalWidth, Container Max Width: $containerMaxWidth")
+
 
             // ウィジェットを更新
             appWidgetManager.updateAppWidget(appWidgetId, views)

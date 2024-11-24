@@ -3,24 +3,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/black">
 
     <TextView
-        android:id="@+id/widget_text"
+        android:id="@+id/widget_direction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="唐木田 新宿"
-        android:textSize="16sp"
-        android:gravity="center"
+        android:text="新宿方面"
+        android:textSize="13sp"
+        android:textColor="@color/white"
+        android:gravity="start"
         android:background="@color/black"
-        android:fontFamily="@font/pixelfont"/>
+        android:fontFamily="@font/pixelfont"
+        android:layout_marginStart="4dp"/>
 
     <LinearLayout
         android:id="@+id/widget_image_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:layout_marginStart="4dp"
+        android:background="#101010">
 
         <ImageView
             android:id="@+id/widget_image"
@@ -35,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:scaleType="fitStart"
+            android:scaleType="fitXY"
             android:contentDescription="" />
 
         <ImageView
@@ -43,7 +48,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:scaleType="fitStart"
+            android:scaleType="fitXY"
             android:contentDescription="" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/widget_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="唐木田 新宿"
+        android:textSize="10sp"
+        android:gravity="end"
+        android:background="@color/black"
+        android:fontFamily="@font/pixelfont"/>
 </LinearLayout>
