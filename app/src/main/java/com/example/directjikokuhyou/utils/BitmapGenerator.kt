@@ -13,7 +13,9 @@ class BitmapGenerator(private val context: Context) {
         fontResId: Int,
         textSize: Float,
         textColor: Int,
-        backgroundColor: Int = android.graphics.Color.parseColor("#101010")
+        backgroundColor: Int = android.graphics.Color.parseColor("#101010"),
+        defaultWidth: Int = 50, // デフォルトの幅
+        defaultHeight: Int = 50 // デフォルトの高さ
     ): Bitmap {
         val paint = Paint().apply {
             isAntiAlias = true
@@ -23,8 +25,8 @@ class BitmapGenerator(private val context: Context) {
             typeface = Typeface.create(context.resources.getFont(fontResId), Typeface.NORMAL)
         }
 
-        val textWidth = paint.measureText(text).toInt()
-        val textHeight = (paint.descent() - paint.ascent()).toInt()
+        val textWidth = paint.measureText(text).toInt().coerceAtLeast(defaultWidth)
+        val textHeight = (paint.descent() - paint.ascent()).toInt().coerceAtLeast(defaultHeight)
 
         val bitmap = Bitmap.createBitmap(textWidth, textHeight, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)

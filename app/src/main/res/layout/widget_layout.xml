@@ -62,6 +62,38 @@
         </LinearLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/widget_image_container_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginStart="4dp"
+        android:background="#101010">
+
+        <ImageView
+            android:id="@+id/widget_image_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:contentDescription="" />
+
+        <ImageView
+            android:id="@+id/widget_image_exp_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:contentDescription="" />
+
+        <ImageView
+            android:id="@+id/widget_image_dest_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:contentDescription="" />
+    </LinearLayout>
+
+
     <TextView
         android:id="@+id/widget_text"
         android:layout_width="match_parent"
