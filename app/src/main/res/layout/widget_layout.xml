@@ -15,13 +15,8 @@
         android:background="@color/black"
         android:fontFamily="@font/pixelfont"/>
 
-    <Button
-        android:id="@+id/widget_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="唐木田 新宿" />
-
     <LinearLayout
+        android:id="@+id/widget_image_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

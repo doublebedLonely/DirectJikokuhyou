@@ -35,7 +35,7 @@ class WidgetProvider : AppWidgetProvider() {
             val pendingIntent = PendingIntent.getBroadcast(
                 context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
-            views.setOnClickPendingIntent(R.id.widget_button, pendingIntent)
+            views.setOnClickPendingIntent(R.id.widget_image_container, pendingIntent)
 
             // 現在の時刻を取得
             val currentTime: String = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"))
