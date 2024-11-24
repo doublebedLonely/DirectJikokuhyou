@@ -21,11 +21,34 @@
         android:layout_height="wrap_content"
         android:text="唐木田 新宿" />
 
-    <ImageView
-        android:id="@+id/widget_image"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="center"
-        android:contentDescription=""
-        />
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/widget_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:scaleType="fitStart"
+            android:contentDescription="" />
+
+        <ImageView
+            android:id="@+id/widget_image_exp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:scaleType="fitStart"
+            android:contentDescription="" />
+
+        <ImageView
+            android:id="@+id/widget_image_dest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:scaleType="fitStart"
+            android:contentDescription="" />
+    </LinearLayout>
 </LinearLayout>

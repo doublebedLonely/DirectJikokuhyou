@@ -10,6 +10,8 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.widget.RemoteViews
+import com.example.directjikokuhyou.utils.loadTrainTimes
+import com.example.directjikokuhyou.utils.getNextTwoDirectTrains
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
@@ -40,16 +42,58 @@ class WidgetProvider : AppWidgetProvider() {
             // 取得した現在時刻をwidget_textに設定
             views.setTextViewText(R.id.widget_text, "Current Time: $currentTime")
 
+            val trainTimeList = loadTrainTimes(context)
+            val trainTimePair = getNextTwoDirectTrains(trainTimeList)
+
             // Bitmapを作成
             val bitmap = createBitmapWithCustomFont(
                 context,
-                currentTime,
+                trainTimePair.first?.time ?: "直通なし",
                 R.font.pixelfont, // フォントリソース
-                50f // テキストサイズ
+                50f, // テキストサイズ
+                textColor = android.graphics.Color.WHITE
+            )
+
+            // Bitmapを作成
+            val bitmapExp = when (trainTimePair.first?.color){
+                "b" -> createBitmapWithCustomFont(
+                context,
+                "        ",
+                R.font.pixelfont, // フォントリソース
+                50f, // テキストサイズ
+                android.graphics.Color.CYAN
+                )
+
+                "r" -> createBitmapWithCustomFont(
+                    context,
+                    "    急行",
+                    R.font.pixelfont, // フォントリソース
+                    50f, // テキストサイズ
+                    android.graphics.Color.RED
+                )
+
+                else -> createBitmapWithCustomFont(
+                    context,
+                    "        ",
+                    R.font.pixelfont, // フォントリソース
+                    50f, // テキストサイズ
+                    android.graphics.Color.RED
+                )
+                }
+
+            // Bitmapを作成
+            val bitmapDest = createBitmapWithCustomFont(
+                context,
+                "新宿",
+                R.font.pixelfont, // フォントリソース
+                50f, // テキストサイズ
+                android.graphics.Color.CYAN
             )
 
             // BitmapをImageViewに設定
             views.setImageViewBitmap(R.id.widget_image, bitmap)
+            views.setImageViewBitmap(R.id.widget_image_exp, bitmapExp)
+            views.setImageViewBitmap(R.id.widget_image_dest, bitmapDest)
 
             // ウィジェットを更新
             appWidgetManager.updateAppWidget(appWidgetId, views)
@@ -61,11 +105,12 @@ class WidgetProvider : AppWidgetProvider() {
         context: Context,
         text: String,
         fontResId: Int,
-        textSize: Float
+        textSize: Float,
+        textColor: Int
     ): Bitmap {
         val paint = Paint().apply {
             isAntiAlias = true
-            color = android.graphics.Color.WHITE
+            color = textColor
             textAlign = Paint.Align.LEFT
             this.textSize = textSize
 
@@ -82,7 +127,7 @@ class WidgetProvider : AppWidgetProvider() {
         val canvas = Canvas(bitmap)
 
         // 背景を黒で塗りつぶす
-        canvas.drawColor(android.graphics.Color.BLACK)
+        canvas.drawColor(android.graphics.Color.parseColor("#101010"))
         // カスタムフォント文字を描画
         canvas.drawText(text, 0f, -paint.ascent(), paint)
 
