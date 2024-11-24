@@ -14,7 +14,7 @@ data class TrainTime(val time: String, val color: String, val direct: String)
 
 
 fun loadTrainTimes(context: Context): List<TrainTime> {
-    val inputStream = context.assets.open("times.json")
+    val inputStream = context.assets.open("times_weekday.json")
     val reader = InputStreamReader(inputStream)
     val json = reader.readText()
     reader.close()
