@@ -1,6 +1,7 @@
 package com.example.directjikokuhyou.utils
 
 import android.content.Context
+import com.example.directjikokuhyou.utils.DayUtils.isWeekendOrHoliday
 import com.google.gson.Gson
 import java.io.InputStreamReader
 import java.time.LocalTime
@@ -14,7 +15,10 @@ data class TrainTime(val time: String, val color: String, val direct: String)
 
 
 fun loadTrainTimes(context: Context): List<TrainTime> {
-    val inputStream = context.assets.open("times_weekday.json")
+    val isHoliday = isWeekendOrHoliday()
+    val fileName = if (isHoliday) "times_holiday.json" else "times_weekday.json"
+
+    val inputStream = context.assets.open(fileName)
     val reader = InputStreamReader(inputStream)
     val json = reader.readText()
     reader.close()
